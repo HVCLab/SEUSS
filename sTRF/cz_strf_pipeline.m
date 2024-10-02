@@ -63,15 +63,22 @@ end
 
 %% 4 Run Generic Model on Server
 % Set up and run a generic model on the server for further processing.
-edit cz_strf_main_server_v2.m  % Edit and configure the script to run the generic model on the server.
+edit cz_strf_main_server_v2.m  % Edit and configure the script to run the generic model on the server, change generic param in function.
+edit cz_strf_main_server_v2_m6.m % Same but for model6
 
-%% 6 Run Model Comparison
+%% 5 Run Model Comparison
 % Script to perform model comparison between different models.
-edit cz_model_comparison.m  % Edit the script for comparing different models.
+edit cz_model_comparison.m  % Edit the script for comparing different models, runs locally.
 
-%% 5 Run Permutations
+%% 6 Run Permutations
 % Configure and run permutations to validate the results.
-edit cz_strf_main_server_v2.m  % Configure the script for running permutations.
+edit cz_strf_main_server_v2.m  % Configure the script for running permutations, change permuta and outStrfFolder params in function.
+edit cz_strf_main_server_v2_m6.m % Same but for model6
+
+
+%% 7 Plot Cluster Results
+% Plot the results from cluster-based permutation tests.
+
 
 %% 7 Plot Cluster Results
 % Plot the results from cluster-based permutation tests.
