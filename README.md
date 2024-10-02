@@ -4,4 +4,4 @@
  see https://www.fieldtriptoolbox.org/faq/how_to_get_started_with_distributed_computing_using_qsub/
  and https://www.fieldtriptoolbox.org/tutorial/distributedcomputing_qsub/
  
- 2. Model 6 is the largest model and takes longer to run, so it has it's own scripts so that it can be run in parallel sessions
+ 2. Model 6 is the largest model and takes longer to run, so it has it's own scripts so that it can be run in parallel sessions with the 1 to 5 models
