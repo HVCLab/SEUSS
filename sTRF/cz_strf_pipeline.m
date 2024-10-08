@@ -3,6 +3,7 @@
 % saving statistical fits, and performing model comparisons. Additionally, the script computes median alpha values 
 % for generic models and processes permutation tests. Finally, it runs and visualizes the results of the cluster-based 
 % permutation tests.
+%
 
 % The main stages of the script are:
 % 0. Preparation of TRF parameters, where model parameters such as features, output folder, and filter settings 
