@@ -38,7 +38,7 @@ cdata = cz_loadData(cs, outStrfFolder);
 %% Define function parameters.
 filtro = 1;                  % Whether to apply filtering.
 generic = 1;                 % Use generic models.
-genModelFolder = 'results_124_091224';  % Folder for storing generic model results.
+genModelFolder = 'results_124_091224';  % Folder for getting generic model alpha.
 permuta = 1;                 % Whether to permute predictors.
 
 %% Define models to run.
