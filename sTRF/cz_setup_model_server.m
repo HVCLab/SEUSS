@@ -1,4 +1,4 @@
-run cz_path_definitions_server_strf.m
+erun cz_path_definitions_server_strf.m
 % run cz_path_definitions_local_strf.m
 
 %% run models on cluster

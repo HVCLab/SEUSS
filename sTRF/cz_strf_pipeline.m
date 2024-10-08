@@ -3,8 +3,6 @@
 % saving statistical fits, and performing model comparisons. Additionally, the script computes median alpha values 
 % for generic models and processes permutation tests. Finally, it runs and visualizes the results of the cluster-based 
 % permutation tests.
-%
-%
 
 % The main stages of the script are:
 % 0. Preparation of TRF parameters, where model parameters such as features, output folder, and filter settings 
@@ -35,7 +33,7 @@
 % (https://www.fieldtriptoolbox.org/tutorial/distributedcomputing_qsub/) now it should be possible (and desirable!) to 
 % incorporate subject vs. generic, and actual vs. permuted data as arguments to the function.
 
-% 0 Prepare TRF Parameters
+%% 0 Prepare TRF Parameters
 % Define features, output folder, model parameters (generic flag, n-fold, and filter settings).
 edit cz_strf_main_server_v2.m  % Open the script to define parameters for TRF computation.
 edit cz_strf_main_server_v2_m6.m  % Optional: Edit parameters for model 6.
