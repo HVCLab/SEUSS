@@ -1,4 +1,5 @@
 For the TRF analysis (strf folder)
+
  0. cz_strf_pipeline is the main script to run TRF analysis.
 Before that, data was prepared with cz_produce_data which prepares data in the format required for the TRF function and also prepares predictor matrices using cz_make_pred_mat1. Any change in predictors should be included in the cz_make_pred_mat1.  
  
