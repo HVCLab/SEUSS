@@ -37,20 +37,6 @@ frequencies = iepc_data(cs).cfs;
 % because saving the whole dataset might take too long
 % save('iepc_data.mat', 'iepc_data')
 
-% TODO: Saving by channel could be optimized here, before calculating the differences
-
-%% 1. Baseline Correction (currently commented out)
-
-% Define the baseline period
-% baseline_limits = [-0.15 -0.05];  % Baseline window (in seconds)
-% baseline_wind = iepc_data(cs).times > baseline_limits(1) & iepc_data(cs).times < baseline_limits(2); 
-
-% Perform baseline correction by subtracting the mean IEPC during the baseline window
-% for cs = 1:nsbj
-%     iepc_data(cs).iepcAll_basecor = iepc_data(cs).iepcAll - ...
-%         mean(iepc_data(cs).iepcAll(:,baseline_wind,:,:), 2);  % Baseline-corrected IEPC data
-% end
-
 %% 2. Reorganize Data Across Subjects by Channel
 
 % Combine IEPC data from all subjects into a 5D matrix
@@ -61,16 +47,25 @@ iepc_dataMAT = permute(iepc_dataMAT, [1 2 5 4 3]);  % Final dimension order: fre
 %% 3. Compute Condition Differences and Save by Channel
 
 % Compute the difference between conditions for each channel
-% 1st comparison: 'Reg' vs 'Irr' (condition 2 vs condition 1), if int, then
+condicionesInt = {'ui', 'ur','si','sr','soi','sor'};
 
 if int
     
     % 1st comparison: UR - SR and 2nd comparison is UI - SI
 iepc_dataMAT_diff(:,:,:,1,:) = iepc_dataMAT(:,:,:,2,:) - iepc_dataMAT(:,:,:,4,:);
 iepc_dataMAT_diff(:,:,:,2,:) = iepc_dataMAT(:,:,:,1,:) - iepc_dataMAT(:,:,:,3,:);
-    % 3rd comp is interaction (UR-SR)-(UI-SI)
-iepc_dataMAT_diff(:,:,:,3,:) = iepc_dataMAT_diff(:,:,:,1,:) - iepc_dataMAT_diff(:,:,:,2,:);
+    % 3rd comp is interaction (UI-SI)-(UR-SR)
+iepc_dataMAT_diff(:,:,:,3,:) = iepc_dataMAT_diff(:,:,:,2,:) - iepc_dataMAT_diff(:,:,:,1,:);
 dataMATdim = {'uns vs str REG', 'uns vs str IRR','INT', 'freq x time x sbj x cond'};
+    % 1st comparison: UI - UR and 2nd comparison is SI - SR
+iepc_dataMAT_diff(:,:,:,4,:) = iepc_dataMAT(:,:,:,1,:) - iepc_dataMAT(:,:,:,2,:);
+iepc_dataMAT_diff(:,:,:,5,:) = iepc_dataMAT(:,:,:,3,:) - iepc_dataMAT(:,:,:,4,:);
+    % 3rd comp is interaction (UI-UR)-(SI-SR)
+iepc_dataMAT_diff(:,:,:,6,:) = iepc_dataMAT_diff(:,:,:,4,:) - iepc_dataMAT_diff(:,:,:,5,:);
+dataMATdim = {'uns vs str REG', 'uns vs str IRR','INT1','irr vs reg UNS','irr vs reg STR','INT2', 'freq x time x sbj x cond'};
+
+
+
 else
   iepc_dataMAT_diff(:,:,:,1,:) = iepc_dataMAT(:,:,:,2,:) - iepc_dataMAT(:,:,:,1,:);
 % 2nd comparison: 'Str' vs 'Uns' (condition 4 vs condition 3)
@@ -88,10 +83,13 @@ for cchan = 1:size(iepc_dataMAT_diff,5)  % Loop over all channels
     
     % Create a filename for saving the channel-specific data
     save_filename = sprintf('permutest_input_cchan_%03d.mat', cchan);
-    
+	if int   
     % Save the difference data for this channel
-    save(fullfile(processed_datapath,'preprocessed','clustinput','int',save_filename), ...
+    save(fullfile(processed_datapath,'preprocessed','clustinput','intall',save_filename), ...
         'iepc_dataMAT_diff_chan', 'dataMATdim','time','frequencies');
+		else
+	save(fullfile(processed_datapath,'preprocessed','clustinput',save_filename), ...
+        'iepc_dataMAT_diff_chan', 'dataMATdim','time','frequencies');
+	end
+		
 end
-
-
