@@ -54,3 +54,6 @@ qsubcellfun(@cz_iepc,num2cell(cs),...
  
  %% compute grand averages
 run cz_iepc_grandAverages.m
+
+%% plot
+run cz_plotFig3x3.m
