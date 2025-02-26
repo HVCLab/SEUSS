@@ -50,14 +50,6 @@ for i = 1:ncs
     
    clear alldata
 
-%% remove NANs
-if size(textgrids(i).textgridmatclean,1) == 13
-    mask = logical(textgrids(i).textgridmat(13,:)); %the mask is saved in row 13 of the textgrid
-    cdata(i).data = cdata(i).data(:,mask);
-    cdata(i).allPred = cdata(i).allPred(:,mask);   
-    cdata(i).trials = cdata(i).trials(:,mask);
-    cdata(i).tp = cdata(i).tp(:,mask);
-end
 
 % arrayfun(@(x) size(x.data,2), cdata, 'UniformOutput', false)
 
