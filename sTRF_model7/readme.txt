@@ -1,8 +1,5 @@
 @camilazuga, 02.26.25
 
-
-
-
 How predictors are selected in the TRF model:
 - the predictor matrix for a specific model is created in line 96 (onwards) of cz_strf_main_server_v3
 - to define which predictors to include, it matches the names defined in cz_modelDefinitions with the names of the predictors saved in a dictionary. The dictionary has key-value pairs of predictor name and predictor row position in the predictors matrix.
