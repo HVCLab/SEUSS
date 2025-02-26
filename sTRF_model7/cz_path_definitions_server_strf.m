@@ -11,14 +11,15 @@ datapath = '/gpfs01/oganian/data/data/P023_SeussAdult'; % data directory.
 % Contains "cleanEEGadults", "Textgrids", and "stimulus"
 % "cleanEEGadults": includes mat versions of EEG data
 % "Textgrids": includes "BeforeCleaning" and "AfterCleaning"
-megfolder = 'cleanEEGadults';
+megfolder = 'CLEAN2_hp0.5Hz';
 megdatapath = fullfile(datapath, megfolder); 
-tgs = fullfile('Textgrids','AfterCleaning');
-textgridsFolder = fullfile(datapath,tgs);
+
+tgs = fullfile(megdatapath,'TXTGRDMAT'); % textgridsFolder = fullfile(datapath,tgs);
+textgridsFolder = tgs;
+
 perm = fullfile('function_outputs','sTRF','permutations');
 permFolder = fullfile(datapath,perm);
 
-inStrfFolder = '/gpfs01/oganian/data/data/P023_SeussAdult/function_outputs'; % directory of the processed data for figures (folder of your choice)
+outStrfFolder = fullfile(datapath,'function_outputs'); % directory of the processed data for figures (folder of your choice)
 currentFolder = pwd();
-
 
