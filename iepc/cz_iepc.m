@@ -22,7 +22,7 @@ condicionesInt = {'ui', 'ur','si','sr','soi','sor'};
 filename = sprintf('cs%0.2d', cs);
 
 % Find all files in the 'hilbert' folder corresponding to this subject
-archivos = dir(fullfile(processed_datapath,'preprocessed','hilbert','int',['*',filename,'*']));
+archivos = dir(fullfile(processed_datapath,data_folder,'preprocessed','hilbert','int',['*',filename,'*']));
 nFreq = length(archivos); % Number of frequencies (or files) available for this subject
 
 % Loop through each frequency file
@@ -74,7 +74,7 @@ for cFreq = 1:nFreq
 end
 
 % Define the save file path and filename for the IEPC results
-savefname = fullfile(processed_datapath,'preprocessed','plvs','int',sprintf('IEPC_spectral_data_FiltWidth0.5_cs%0.2d.mat',cs));
+savefname = fullfile(processed_datapath,data_folder, 'preprocessed','plvs','int',sprintf('IEPC_spectral_data_FiltWidth0.5_cs%0.2d.mat',cs));
 
 % Define dimension names for the saved data (for clarity when loading the file)
 iepcAllDimNames = {'frequency', 'time', 'channels', 'condition'};

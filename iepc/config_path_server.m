@@ -2,7 +2,9 @@
 
 datapath = '/gpfs01/oganian/data/data/P023_SeussAdult'; % data directory. 
 
-processed_datapath = '/gpfs01/oganian/data/data/P023_SeussAdult/function_outputs'; % directory of the processed data for figures (folder of your choice)
+processed_datapath = '/gpfs01/oganian/data/data/P023_SeussAdult/function_outputs/sdataClean2_hp0.5'; % directory of the processed data for figures (folder of your choice)
+
+data_folder = 'sdataClean2_hp0.5';
 
 addpath /gpfs01/oganian/data/code/matlab_code/fieldtrip-master
 addpath /gpfs01/oganian/data/code/matlab_code/fieldtrip-master/qsub
