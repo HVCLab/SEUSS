@@ -1,25 +1,25 @@
 % pipeline for preparing data and running TRF analysis
 % cz, January 2025
 
-%% prepare data (run only once, if needed)
-run cz_set2mat.m % if working with less filtered data
-run cz_produce_cdata.m % add predictors to data
+% %% prepare data (run only once, if needed)
+% run cz_set2mat.m % if working with less filtered data
+% run cz_produce_cdata.m % add predictors to data
 
-%% sanity check, peak rate ERPs (optional)
-edit cz_pRateEvents_erp.m
-edit cz_timelockea.m
-
+% %% sanity check, peak rate ERPs (optional)
+% edit cz_pRateEvents_erp.m
+% edit cz_timelockea.m
+% 
 %% 1  run TRFs on cluster
 
 run cz_path_definitions_server_strf.m
 run cz_modelDefinitions.m
 
-modelos = {model2,model7};
+modelos = {model7};
 filtro = 1;
-generic = 1;
+generic = 0;
 permuta = 0;
 datatype = 'eeg'; % or 'erm'
-inputDataFolder = 'sdataClean2_hp0.5'; %'sdata';
+inputDataFolder = fullfile('sdataClean2_hp0.5','data'); %'sdata';
 outStrfFolder = inputDataFolder
 n = 26; % number of subjects to run
 
@@ -51,28 +51,28 @@ end
 % (meanTestR, sigma2, alpha)
 
 
-modelos = {'model2','model7'};
-generic = 0;   
-salvar = 1;
-figuras = 0; %this needs debuggin to work
+% modelos = {'model2','model7'};
+% generic = 0;   
+% salvar = 1;
+% figuras = 0; %this needs debuggin to work
 
-for i = 1:length(modelos)
-inputFolder =  fullfile('sdataClean2_hp0.5'); if generic, inputFolder = fullfile(inputFolder,'generic'),end; 
-fullinputFolder = fullfile(inputFolder, modelos{i});
+% for i = 1:length(modelos)
+% inputFolder =  fullfile('sdataClean2_hp0.5'); if generic, inputFolder = fullfile(inputFolder,'generic'),end; 
+% fullinputFolder = fullfile(inputFolder, modelos{i});
 
-cz_checkTRFs_fit_v2(fullinputFolder, generic, salvar, figuras)
+% cz_checkTRFs_fit_v2(fullinputFolder, generic, salvar, figuras)
 
-end
+% end
 
-%% 3 compute  median alpha for generic models
+% 3 compute  median alpha for generic models
 
-modelos = {'model2','model7'}
+% modelos = {'model2','model7'}
 
-for i = 1:length(modelos)
+% for i = 1:length(modelos)
 
-inputFolder =  fullfile('sdataClean2_hp0.5'); if generic, inputFolder = fullfile(inputFolder,'generic'),end; 
-fullinputFolder = fullfile(inputFolder, modelos{i});
+% inputFolder =  fullfile('sdataClean2_hp0.5'); if generic, inputFolder = fullfile(inputFolder,'generic'),end; 
+% fullinputFolder = fullfile(inputFolder, modelos{i});
 
-cz_genericmodel_alpha(fullinputFolder)
+% cz_genericmodel_alpha(fullinputFolder)
 
-end
+% end
