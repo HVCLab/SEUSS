@@ -17,7 +17,7 @@ run cz_modelDefinitions.m
 % for original eeg data
 if strcmp(datatype,'eeg') % for original EEG data
 chanind.chanind = (1:124)'; % all channels
-cdata = cz_loadData(cs, inStrfFolder,inputDataFolder); % load data
+cdata = cz_loadData(cs, outStrfFolder,inputDataFolder); % load data
 end
 
 % if strcmp(datatype,'erm')
